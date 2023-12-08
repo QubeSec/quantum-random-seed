@@ -25,14 +25,14 @@ func main() {
 }
 
 func quantumSeed(c *gin.Context) {
-	// Seed the random number generator with the current time
-
+	// Get the number of bytes requested
 	desiredBytes, err := strconv.Atoi(c.Query("bytes"))
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
 
+	// Seed the random number generator
 	rand.NewSource(time.Now().UnixNano())
 
 	// Read the entire hex content of the file
@@ -48,5 +48,6 @@ func quantumSeed(c *gin.Context) {
 	// Extract the desired number of bytes from the original slice
 	randomBytes := hexContent[randomStart : randomStart+desiredBytes]
 
+	// Return the random bytes as a string
 	c.String(200, string(randomBytes))
 }
