@@ -2,7 +2,6 @@ package main
 
 import (
 	"embed"
-	"encoding/hex"
 	"fmt"
 	"math/rand"
 	"strconv"
@@ -43,22 +42,11 @@ func quantumSeed(c *gin.Context) {
 		return
 	}
 
-	// Decode hex content
-	originalBytes, err := hex.DecodeString(string(hexContent))
-	if err != nil {
-		fmt.Println("Error decoding hex content:", err)
-		return
-	}
-
 	// Generate a random starting position in the byte slice
-	randomStart := rand.Intn(len(originalBytes) - desiredBytes)
+	randomStart := rand.Intn(len(hexContent) - desiredBytes)
 
 	// Extract the desired number of bytes from the original slice
-	randomBytes := originalBytes[randomStart : randomStart+desiredBytes]
+	randomBytes := hexContent[randomStart : randomStart+desiredBytes]
 
-	// Print the randomly selected bytes in hex format
-	randomHex := hex.EncodeToString(randomBytes)
-	// return randomHex
-
-	c.String(200, randomHex)
+	c.String(200, string(randomBytes))
 }
