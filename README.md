@@ -8,7 +8,7 @@ kubectl expose deployment quantum-random-seed --port=80 --name=quantum-random-se
 
 Deploy netshoot to your cluster:
 ```bash
-kubectl run netshoot --image-pull-policy=IfNotPresent --image=nicolaka/netshoot -- sleep infinity
+kubectl run netshoot --image=nicolaka/netshoot -- sleep infinity
 kubectl exec -it netshoot -- sh
 ```
 
