@@ -2,7 +2,7 @@
 
 Deploy the quantum-random-seed to your cluster:
 ```bash
-kubectl create deployment quantum-random-seed --image=qubesec/quantum-random-seed:v0.1.3
+kubectl create deployment quantum-random-seed --image=qubesec/quantum-random-seed:v0.1.4
 kubectl expose deployment quantum-random-seed --port=80 --name=quantum-random-seed
 ```
 
