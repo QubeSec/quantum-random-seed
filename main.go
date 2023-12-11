@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"math/rand"
 	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -31,9 +30,6 @@ func quantumSeed(c *gin.Context) {
 		fmt.Println("Error:", err)
 		return
 	}
-
-	// Seed the random number generator
-	rand.NewSource(time.Now().UnixNano())
 
 	// Read the entire hex content of the file
 	hexContent, err := file.ReadFile("temp_hex.txt")
