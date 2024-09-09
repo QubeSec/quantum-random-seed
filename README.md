@@ -9,7 +9,7 @@ kubectl expose deployment quantum-random-seed --port=80 --name=quantum-random-se
 Deploy netshoot to your cluster:
 ```bash
 kubectl run netshoot --image=nicolaka/netshoot -- sleep infinity
-kubectl exec -it netshoot -- sh
+kubectl exec -it netshoot -- bash
 ```
 
 Test your API server:
